@@ -1,0 +1,40 @@
+<p>productlist works!</p>
+
+    <!-- <div class="card-header">
+        Menu
+    </div> -->
+<div class="row">
+    <div class="col-sm-6">
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="assets/images/vegpizza.jpg" alt="Card image cap">
+    <div class="card-body">
+
+        <h5 class="card-title">Pizza Type- {{products[0].productName}}</h5>
+        <p class="card-text">Price- {{products[0].price| currency:"GBP"}}</p>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+</div>
+<div class="col-sm-6"> 
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="assets/images/meatLovers.jpg" alt="Card image cap">
+    <div class="card-body">
+
+        <h5 class="card-title">Pizza Type- {{products[1].productName}}</h5>
+        <p class="card-text">Price- {{products[1].price| currency:"GBP"}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    </div>
+</div>
+</div>
+
+<div class="display-board">
+  <h4>Products Created</h4>
+  <div class="number">
+    {{productCount}}
+  </div>
+  <div class="btn">
+    <button class="btn btn-warning" (click)="getAllProducts()">Get All Products</button>
+  </div>
+</div>
+
+<!-- <button type="button" (click)="goBack()">go back</button> -->
