@@ -94,7 +94,7 @@ filterSearchedPizzas(query: string){
    console.log(typeof this.products);//its an object-cant use filter for an object
   console.log("Pizzaarray",this.pizzaArray);
   console.log("filtered array= ",this.pizzaArray.status);
-  
+  //output
   this.filteredPizzas = (query)?
   this.pizzaArray.status.filter((p: { product_name: string; })  => p.product_name.toLowerCase().includes(query.toLowerCase())) :
   this.pizzaArray.status;
