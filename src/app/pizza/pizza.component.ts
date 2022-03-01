@@ -98,7 +98,7 @@ filterSearchedPizzas(query: string){
   this.filteredPizzas = (query)?
   this.pizzaArray.status.filter((p: { product_name: string; })  => p.product_name.toLowerCase().includes(query.toLowerCase())) :
   this.pizzaArray.status;
-console.log("results array= ",this.pizzaArray.status[0]);
+console.log("results array= ",this.pizzaArray.status[0]);//get a specfic index
 
   // this.filteredPizzas = (query)?
   // this.products.filter(p => p.product_name.toLowerCase().includes(query.toLowerCase())) :
@@ -112,7 +112,7 @@ console.log("results array= ",this.pizzaArray.status[0]);
 // });  
  console.log('Object=',this.products)  
 console.log('Array=',this.results.status) //undefined
-
+//return this.filteredPizzas.find('product_name',(ref: { where: (arg0: string, arg1: string, arg2: string) => any; }) =>ref.where('product_name','==',query)).snapshotChanges();
 }
 
 //new

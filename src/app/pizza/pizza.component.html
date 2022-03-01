@@ -75,7 +75,31 @@
             <td>{{pizza.total_price |currency:"GBP"}}</td>
         </tr>
     </tbody>
-</table></div>
+    <mat-paginator #paginator [length]="100" [pageSizeOptions]="[3,5,10]" aria-label="select page">
+</mat-paginator>
+</table>
+
+</div>
+
+
+
+<!-- does not work -->
+<!-- <data-table [items]="items"
+[itemCount]="itemCount"
+[reload]="reloadItems($event">
+    <data-table-column
+    [property]="'productname'"
+    [header]="'Pizza Name'"
+    [sortable]="true"
+    [resizable]="true"> </data-table-column>
+    <data-table-column [property]="'product_name'" [header]="'Pizza Name'" [sortable]="true" [resizable]="true">
+
+    </data-table-column>
+
+   
+</data-table> -->
+
+
 <!-- Example of a display -->
 <!-- <ul class="pizzas">
     <li *ngFor="let pizza of pizzas">

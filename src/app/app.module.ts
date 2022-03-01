@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PizzaComponent } from './pizza/pizza.component';
@@ -38,7 +39,8 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatListModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatPaginatorModule
   ],
   providers: [
     PostService
