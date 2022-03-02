@@ -1,9 +1,10 @@
 import { Pizza } from './../model/post';
 import { PostService } from './../services/post.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { filter, Subscription } from 'rxjs';
-
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table'
 
 @Component({
   selector: 'app-pizza',
@@ -16,6 +17,7 @@ export class PizzaComponent implements OnInit,OnDestroy {
   private pizzaSub!: Subscription;
   pizzaService: PostService;
    
+
   //new
   subscription: Subscription;
 //new from tutorial
@@ -46,6 +48,16 @@ productname:any;
 
   
   }
+  //pagination
+   @ViewChild('paginator') paginator:MatPaginator
+   datasource =new MatTableDataSource<'post'>();//might need to chane this to a service
+   
+   //invoke method
+   ngAfterViewInit(){
+       this.datasource = new MatTableDataSource(this.pizzaArray);
+      // length===this.pizzaArray.length();
+       this.datasource.paginator =this.paginator;
+   }
 
   @Input() productCount = 0;
   @Output() getProductsEvent = new EventEmitter();
@@ -98,7 +110,7 @@ filterSearchedPizzas(query: string){
   this.filteredPizzas = (query)?
   this.pizzaArray.status.filter((p: { product_name: string; })  => p.product_name.toLowerCase().includes(query.toLowerCase())) :
   this.pizzaArray.status;
-console.log("results array= ",this.pizzaArray.status[0]);//get a specfic index
+console.log("results array= ",this.pizzaArray.status);//status[0]get a specfic index
 
   // this.filteredPizzas = (query)?
   // this.products.filter(p => p.product_name.toLowerCase().includes(query.toLowerCase())) :
@@ -110,7 +122,7 @@ console.log("results array= ",this.pizzaArray.status[0]);//get a specfic index
 //     arr.push({[key]products[key]})  
 //     return arr;  
 // });  
- console.log('Object=',this.products)  
+ console.log('Object=',this.products)  //all records in the db are shown
 console.log('Array=',this.results.status) //undefined
 //return this.filteredPizzas.find('product_name',(ref: { where: (arg0: string, arg1: string, arg2: string) => any; }) =>ref.where('product_name','==',query)).snapshotChanges();
 }

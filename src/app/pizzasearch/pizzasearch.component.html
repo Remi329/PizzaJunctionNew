@@ -8,14 +8,15 @@ placeholder="EnterProductname" type="text">
 </nav>
 
 <div id="search-component">
-    <label for="search-box">Pizza Search</label>
+    <label for="search-box">Pizza Search from search component</label>
     <input #searchBox id="search-box" (input)="search(searchBox.value)" />
-<!-- 
+
     <ul class="search-result">
-        <li *ngFor="let pizza of pizzas$ | async">
-            <a routerLink="/detail/{{pizza.}}">
-                {{Pizza.}}
+        <li *ngFor="let pizza of pizzas.product_name | async">
+
+            <a routerLink="/search/{{pizza.product_id}}">
+                {{pizza.product_name}}
             </a>
         </li>
-    </ul> -->
+    </ul>
 </div>

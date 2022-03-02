@@ -1,5 +1,7 @@
+import { SearchService } from './services/search.service';
 import { PostService } from './services/post.service';
-import { NgModule } from '@angular/core';
+
+import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,9 +17,24 @@ import { MatListModule } from '@angular/material/list';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { HttpClientModule } from '@angular/common/http';
+
 import { PizzaComponent } from './pizza/pizza.component';
 import { PizzasearchComponent } from './pizzasearch/pizzasearch.component';
+
 import { FormsModule } from '@angular/forms';
+import {MatTableModule} from '@angular/material/table';
+import { RouterModule,Routes } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+
+
+
+//configure routes
+const routes: Routes =[
+  {path:'pizza', component:PizzaComponent},
+   {path:'search/:id', component:PizzasearchComponent}
+]
+
 
 
 @NgModule({
@@ -40,7 +57,11 @@ import { FormsModule } from '@angular/forms';
     MatListModule,
     HttpClientModule,
     FormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTableModule,
+    RouterModule.forRoot(routes),
+    RouterModule,
+    NgxPaginationModule
   ],
   providers: [
     PostService
