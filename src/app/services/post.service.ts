@@ -1,10 +1,21 @@
 import { MessageService } from './message.service';
 import { catchError, map, Observable,of,Subject, tap } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pizza } from '../model/post';
 
-@Injectable()
+// may need to addd this
+//export interface Pizza{
+//     product_id:number,
+//     topping_id:number,
+//     product_name: string,
+//     total_price: number,
+//     image_url:string
+// }
+//added mising injectable
+@Injectable({
+  providedIn: 'root'
+})
 export class PostService {
 
   http: HttpClient
@@ -39,6 +50,15 @@ private pizzas: Pizza[] = [];
 
   getPizzaUpdateListener(){
      return this.pizzasUpdated.asObservable();
+  }
+
+  //returned so the payload can be suscribed to
+  searchForPizzas(query: string){
+    return this.http.post<{payload: Array<Pizza>}>('/api/v1/auth/getPizzaSearch',{payload:query},{
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    }).pipe(
+      map(data => data.payload)
+    );
   }
 
 //SEARCH ATTEMPT

@@ -38,6 +38,12 @@
         </div>
     </nav>
 
+<input class="form-control me-2" type="text" placeholder="Search" aria-label="Search"
+(keyup)="sendData($event)">
+<section class="search-results">
+    <p></p>
+</section>
+
     <hr>
     <h1>Header Component</h1>
     <router-outlet></router-outlet>

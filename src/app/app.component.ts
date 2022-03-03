@@ -1,5 +1,9 @@
+import { PostService } from './services/post.service';
+import { Pizza } from './model/post';
+
 import { PaginationTableService } from './services/pagination-table.service';
 import { Component } from '@angular/core';
+
 import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'app-root',
@@ -8,12 +12,33 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class AppComponent {
   title = 'PizzaJunction';
+
+  pizzas:Array<Pizza> = [];//to store data from the db
+
+  //agination attempt
   pizzaPag:any;
   p: number = 1;
   total: number = 0;
+  service: any;
      
-  constructor(private service:PaginationTableService) {}
+  constructor(private postService:PostService) {}
      
+ /** 
+  * 
+  * */ sendData(event:any){
+    let query:string = event.target.value;
+let matchedSpaces:any = query.match('/\s*/');
+if(matchedSpaces[0]===query) {
+  this.pizzas = [];
+  return;
+}
+
+    this.postService.searchForPizzas(query.trim()).subscribe((results: any) => {
+      this.pizzas = results;
+      console.log(results);
+    })
+    //console.log(event.target.value);//gets the input value
+}
  
   ngOnInit() {
     this.getPag();
@@ -41,4 +66,7 @@ export class AppComponent {
       this.p = event;
       this.getPag();//might need to change this to getPizzas
   }
+
+
+
 }

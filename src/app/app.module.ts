@@ -25,7 +25,7 @@ import { FormsModule } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import { RouterModule,Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 //configure routes
@@ -62,7 +62,9 @@ const routes: Routes =[
     MatPaginatorModule,
     MatTableModule,
     RouterModule.forRoot(routes),
-    RouterModule
+    RouterModule,
+    Ng2SearchPipeModule
+
   ],
   providers: [
     PostService

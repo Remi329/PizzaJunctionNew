@@ -1,17 +1,12 @@
 import { SearchService } from './../services/search.service';
-import { PostService } from './../post.service';
+
 import { debounceTime, distinctUntilChanged, Observable, Subject, switchMap } from 'rxjs';
 // import { Component, OnInit } from '@angular/core';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Pizza } from '../model/post';
 import { Subscription } from 'rxjs';
 import { response } from 'express';
-/**
- * import { PostService } from './../services/post.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Subscription } from 'rxjs';
-*/
+
 @Component({
   selector: 'app-pizzasearch',
   templateUrl: './pizzasearch.component.html',

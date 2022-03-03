@@ -57,20 +57,44 @@
 <!-- <p>
     <a routerLink= "/"></a>
 </p> -->
-<div> 
+<!--tutorial-positionx-->
 
+    
+        <div class="form-group">
+            <label for="searchedPizzaName">Search Term</label>
+            <input type="text" class="form-control" placeholder="Search Pizzas"
+            [(ngModel)]= "filterTerm">
+        </div>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Pizza Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--Removing class="Pagination " maeks it a normalformat -->
+                <tr *ngFor="let pizza of pizzaArray.status | filter: filterTerm">
+                    <td>{{pizza.product_name}}</td>
+                    <td>{{pizza.total_price |currency:"GBP"}}</td>
+                </tr>
+        
+            </tbody>
 
-
-<table class="table table-striped"><p>
+<p>
     <input #query (keyup)="filterSearchedPizzas(query.value)" class="form-control" placeholder="EnterProductname">
 </p>
+
+
+<div> 
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Pizza Name</th>
             <th>Price</th>            
         </tr>
     </thead>
-    <tbody class="pagination">
+    <tbody><!--Removing class="Pagination " maeks it a normalformat -->
         <tr *ngFor="let pizza of pizzaArray.status">
             <td >{{pizza.product_name}}</td>
             <td>{{pizza.total_price |currency:"GBP"}}</td>

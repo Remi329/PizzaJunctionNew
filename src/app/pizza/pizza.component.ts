@@ -5,6 +5,7 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } 
 import { filter, Subscription } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table'
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @Component({
   selector: 'app-pizza',
@@ -27,7 +28,7 @@ export class PizzaComponent implements OnInit,OnDestroy {
   products: any;
   results: any=[];
   filteredPizzas: any[] = [];
-
+filterTerm!: string;//new
  pizzasearchArray: any = [];
 productname:any;
   //used for backend-priyanka tutorial
@@ -110,7 +111,8 @@ filterSearchedPizzas(query: string){
   this.filteredPizzas = (query)?
   this.pizzaArray.status.filter((p: { product_name: string; })  => p.product_name.toLowerCase().includes(query.toLowerCase())) :
   this.pizzaArray.status;
-console.log("results array= ",this.pizzaArray.status);//status[0]get a specfic index
+  console.log("type of results array= ", typeof this.pizzaArray.status);
+console.log("results array= ",this.pizzaArray.status);//status[0]get a specfic index here outputs an actual array
 
   // this.filteredPizzas = (query)?
   // this.products.filter(p => p.product_name.toLowerCase().includes(query.toLowerCase())) :
