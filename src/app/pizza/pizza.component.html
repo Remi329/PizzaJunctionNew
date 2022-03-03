@@ -37,7 +37,7 @@
 
 <h1> Pizza Search3.0</h1>
 
-<table class="table">
+<!-- <table class="table">
     <thead>
         <tr>
             <th>Pizza Name</th>
@@ -45,23 +45,23 @@
             <th></th>
         </tr>
     </thead>
-    <!--error here somehow stops the display pizzas to not work-->
+    error here somehow stops the display pizzas to not work-->
     <!-- <tbody *ngFor="let p of filteredPizzas">
         <tr >
             <td>{{p.product_name}}</td>
             <td>{{p.total_price |currency:"GBP"}}</td>
         </tr>
-    </tbody>  -->
-</table>
+    </tbody>  
+</table>-->
     
 <!-- <p>
     <a routerLink= "/"></a>
 </p> -->
-<div>
+<div> 
 
 
 
-<table class="table"><p>
+<table class="table table-striped"><p>
     <input #query (keyup)="filterSearchedPizzas(query.value)" class="form-control" placeholder="EnterProductname">
 </p>
     <thead>
@@ -70,20 +70,20 @@
             <th>Price</th>            
         </tr>
     </thead>
-    <tbody>
+    <tbody class="pagination">
         <tr *ngFor="let pizza of pizzaArray.status">
-            <td>{{pizza.product_name}}</td>
+            <td >{{pizza.product_name}}</td>
             <td>{{pizza.total_price |currency:"GBP"}}</td>
-        </tr>
-    </tbody>
+        </tr> 
     
-    <mat-paginator #paginator [length]="100" [pageSizeOptions]="[3,5,10]" aria-label="select page">
+    </tbody><mat-paginator #paginator [length]="100" [pageSizeOptions]="[3,5,10]" aria-label="select page">
  </mat-paginator> <!--formats better when inside the table -->
+   
 </table>
 
 </div>
  
-<h1>New Mat table</h1>
+<!-- <h1>New Mat table</h1>
 <div class="container">
     <table mat-table>
         <ngContainer matColumnDef="Pizza Name">
@@ -93,7 +93,7 @@
         <tr mat-header-row *matHeaderRowDef=" pizzaArray.status"></tr>
         <tr mat-row *matRowDef="let row;columns:pizzaArray.status"></tr>
     </table>
-</div>
+</div> -->
 <!-- 
 <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">

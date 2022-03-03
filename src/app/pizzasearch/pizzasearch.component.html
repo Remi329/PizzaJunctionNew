@@ -14,7 +14,7 @@ placeholder="EnterProductname" type="text">
     <ul class="search-result">
         <li *ngFor="let pizza of pizzas.product_name | async">
 
-            <a routerLink="/search/{{pizza.product_id}}">
+            <a [routerLink]="['/search',pizza.product_name]"><!--/{{pizza.product_id}}-->
                 {{pizza.product_name}}
             </a>
         </li>

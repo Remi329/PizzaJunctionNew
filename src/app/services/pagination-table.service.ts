@@ -21,10 +21,14 @@ export class PaginationTableService {
 //    }
 
 // private pizzas: Pizza[] = [];
-  
+   
    public getPizzas(page: number){
+let pizzaDetailsObservable: Observable<Pizza[]>;
 
-    return this.http.get(this.url + '?page=' + page);
+    pizzaDetailsObservable = this.http.get<Pizza[]>(this.url + '?page=' + page);
+    
+    return pizzaDetailsObservable;
+     
     // let pizzaDetailsObservable: Observable<Pizza[]>;
 
     // pizzaDetailsObservable = this.http.get<Pizza[]>(this.url);

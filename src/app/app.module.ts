@@ -24,15 +24,16 @@ import { PizzasearchComponent } from './pizzasearch/pizzasearch.component';
 import { FormsModule } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import { RouterModule,Routes } from '@angular/router';
-import { NgxPaginationModule } from 'ngx-pagination';
-
+import { HomeComponent } from './home/home.component';
 
 
 
 //configure routes
 const routes: Routes =[
+  {path:'home', component:HomeComponent},
   {path:'pizza', component:PizzaComponent},
-   {path:'search/:id', component:PizzasearchComponent}
+  {path:'productlist', component:ProductlistComponent},
+   {path:'search', component:PizzasearchComponent}
 ]
 
 
@@ -43,7 +44,8 @@ const routes: Routes =[
     NavComponent,
     ProductlistComponent,
     PizzaComponent,
-    PizzasearchComponent
+    PizzasearchComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -60,8 +62,7 @@ const routes: Routes =[
     MatPaginatorModule,
     MatTableModule,
     RouterModule.forRoot(routes),
-    RouterModule,
-    NgxPaginationModule
+    RouterModule
   ],
   providers: [
     PostService
