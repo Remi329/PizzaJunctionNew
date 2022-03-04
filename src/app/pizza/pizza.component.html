@@ -1,11 +1,6 @@
 <p>pizza works!</p>
 
-<!-- <ul class="list-group">
-    <li *ngFor = "let pizza of pizzas" 
-    class="list-group-item">
-    
-    </li>
-</ul> -->
+
 
 <div class="display-board">
     <h4>From Pizza Component</h4>
@@ -20,43 +15,14 @@
 <br>
 
 <h1>Pizza search</h1>
-<nav class="navbar" *ngFor="let pizzas of pizzasearchArray.status">
 
-    <input class="form-control" name="productname" [(ngModel)]="productname" (ngModelChange)="Search()"
-        placeholder="Enter Productname" type="text">
-</nav>
-<h1> Pizza Search2.0</h1>
-<p>
-    <input class="form-control" name="productname" [(ngModel)]="productname" (ngModelChange)="Search()"
-        placeholder="EnterProductname" type="text">
-
-</p>
 
     
 
 
 <h1> Pizza Search3.0</h1>
 
-<!-- <table class="table">
-    <thead>
-        <tr>
-            <th>Pizza Name</th>
-            <th>Pizza Price</th>
-            <th></th>
-        </tr>
-    </thead>
-    error here somehow stops the display pizzas to not work-->
-    <!-- <tbody *ngFor="let p of filteredPizzas">
-        <tr >
-            <td>{{p.product_name}}</td>
-            <td>{{p.total_price |currency:"GBP"}}</td>
-        </tr>
-    </tbody>  
-</table>-->
-    
-<!-- <p>
-    <a routerLink= "/"></a>
-</p> -->
+
 <!--tutorial-positionx-->
 
     
@@ -75,110 +41,45 @@
             <tbody>
                 <!--Removing class="Pagination " maeks it a normalformat -->
                 <tr *ngFor="let pizza of pizzaArray.status | filter: filterTerm">
+                    
                     <td>{{pizza.product_name}}</td>
                     <td>{{pizza.total_price |currency:"GBP"}}</td>
                 </tr>
         
             </tbody>
-
-<p>
-    <input #query (keyup)="filterSearchedPizzas(query.value)" class="form-control" placeholder="EnterProductname">
-</p>
-
-
 <div> 
+    <br>
 <table class="table table-striped">
     <thead>
         <tr>
+            <th>Pizza Id</th>
             <th>Pizza Name</th>
             <th>Price</th>            
         </tr>
     </thead>
     <tbody><!--Removing class="Pagination " maeks it a normalformat -->
-        <tr *ngFor="let pizza of pizzaArray.status">
+        <tr *ngFor="let pizza of pizzaArray.status | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index">
+        <td scope="row">{{ pizza.product_id }}</td>
             <td >{{pizza.product_name}}</td>
             <td>{{pizza.total_price |currency:"GBP"}}</td>
         </tr> 
     
-    </tbody><mat-paginator #paginator [length]="100" [pageSizeOptions]="[3,5,10]" aria-label="select page">
- </mat-paginator> <!--formats better when inside the table -->
+    </tbody>
+    <!--<mat-paginator #paginator [length]="100" [pageSizeOptions]="[3,5,10]" aria-label="select page">
+ </mat-paginator> formats better when inside the table -->
    
 </table>
 
+    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onDataChange($event)">
+    </pagination-controls>
+
 </div>
  
-<!-- <h1>New Mat table</h1>
-<div class="container">
-    <table mat-table>
-        <ngContainer matColumnDef="Pizza Name">
-            <th mat-header-cell *matHeaderCellDef> Pizza Name Header</th>
-            <td mat-cell *matCelldef="let pizza">{{pizza.product_name}}</td>
-        </ngContainer>
-        <tr mat-header-row *matHeaderRowDef=" pizzaArray.status"></tr>
-        <tr mat-row *matRowDef="let row;columns:pizzaArray.status"></tr>
-    </table>
-</div> -->
-<!-- 
-<div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
 
-         Position Column 
-        <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef> No. </th>
-            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-        </ng-container>-->
-
-        <!-- Name Column -->
-        <!-- <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-        </ng-container> -->
-
-        <!-- Weight Column -->
-        <!-- <ng-container matColumnDef="weight">
-            <th mat-header-cell *matHeaderCellDef> Weight </th>
-            <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-        </ng-container> -->
-
-        <!-- Symbol Column -->
-        <!-- <ng-container matColumnDef="symbol">
-            <th mat-header-cell *matHeaderCellDef> Symbol </th>
-            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table> -->
-
-    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
-    </mat-paginator>
-</div> --> 
-
-
-<!-- does not work -->
-<!-- <data-table [items]="items"
-[itemCount]="itemCount"
-[reload]="reloadItems($event">
-    <data-table-column
-    [property]="'productname'"
-    [header]="'Pizza Name'"
-    [sortable]="true"
-    [resizable]="true"> </data-table-column>
-    <data-table-column [property]="'product_name'" [header]="'Pizza Name'" [sortable]="true" [resizable]="true">
-
-    </data-table-column>
-
-   
-</data-table> -->
-
-
-<!-- Example of a display -->
-<!-- <ul class="pizzas">
-    <li *ngFor="let pizza of pizzas">
-        <a routerLink="/detail/{{pizza.id}}">
-            <span class="badge">{{pizza.id}}</span> {{pizza.product_name}}
-        </a>
-        <button type="button" class="delete" title="delete hero" (click)="delete(pizza)">x</button>
-    </li>
-</ul> -->
 

@@ -38,58 +38,10 @@
         </div>
     </nav>
 
-<input class="form-control me-2" type="text" placeholder="Search" aria-label="Search"
-(keyup)="sendData($event)">
-<section class="search-results">
-    <p></p>
-</section>
+
 
     <hr>
     <h1>Header Component</h1>
     <router-outlet></router-outlet>
     <h6>Footer Component</h6>
 </body>
-<!-- <div class="container">
-    <router-outlet></router-outlet>
-</div>  allows the images on each pae to be ppushed upwards-->
-
-<!-- <div class="container">
-    <h1>Angular Pizza Pagination Example </h1>
-
-    <table class="table table-bordered">
-        <tr>
-            <th>ProductID</th>
-            <th>Product Name</th>
-            <th>Total Price</th>
-            <th>Image</th>
-        </tr>
-        <tr *ngFor="let piza of pizzaPag | paginate: { itemsPerPage: 3, currentPage: p, totalItems: total }">
-            <td>{{piza.product_id}}</td>        
-            <td>{{piza.product_name}}</td>
-            <td>{{piza.total_price |currency:"GBP"}}</td>
-        </tr>
-    </table>
-
-    <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
-</div> -->
-<!-- 
-<mat-toolbar color="primary">
-    Card view demo
-</mat-toolbar>
-<div class="content">
-    <mat-card class="mat-elevation-z4">
-        <mat-card-header>
-            <mat-card-title>Pizza </mat-card-title>
-        </mat-card-header>
-        <img mat-card-image src="./../assets/images/pepperonAndJalapenos.jpg">
-        <mat-card-content>
-            <p>
-                The Himalayas is a mountain range in Asia.
-            </p>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-button>LIKE</button>
-            <button mat-button>SHARE</button>
-        </mat-card-actions>
-    </mat-card>
-</div> -->

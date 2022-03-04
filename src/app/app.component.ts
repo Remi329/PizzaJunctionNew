@@ -1,10 +1,7 @@
 import { PostService } from './services/post.service';
 import { Pizza } from './model/post';
-
-import { PaginationTableService } from './services/pagination-table.service';
 import { Component } from '@angular/core';
 
-import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -41,32 +38,10 @@ if(matchedSpaces[0]===query) {
 }
  
   ngOnInit() {
-    this.getPag();
+  
   }
    
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-  getPag(){
-      this.service.getPizzas(this.p)
-        .subscribe((response: any) => {
-          console.log("get pag method",this.pizzaPag = response.data);//undefined
-          this.total = response.total;
-        });
-  } 
-   
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-  pageChangeEvent(event: number){
-      this.p = event;
-      this.getPag();//might need to change this to getPizzas
-  }
-
+  
 
 
 }

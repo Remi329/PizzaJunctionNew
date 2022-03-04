@@ -15,10 +15,17 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 export class PizzaComponent implements OnInit,OnDestroy {
   pizzas!: Object;
   pizzaArray: any = [];
-  private pizzaSub!: Subscription;
+  
   pizzaService: PostService;
    
+  //ngxpagination
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 2;
+  tableSizes: any = [3, 6, 9, 12];
 
+
+  
   //new
   subscription: Subscription;
 //new from tutorial
@@ -49,6 +56,21 @@ productname:any;
 
   
   }
+
+  
+
+
+  onDataChange(event: any) {
+    this.page = event;
+    this.ngOnInit();
+  }
+  onSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.ngOnInit();
+  }
+
+
   //pagination
    @ViewChild('paginator') paginator:MatPaginator
    datasource =new MatTableDataSource<'post'>();//might need to chane this to a service
@@ -72,33 +94,9 @@ productname:any;
 
       });
 
-
-    // this.pizzaSub = this.pizzaService.getPizzaUpdateListener()
-    //   .subscribe((response) => {
-    //     this.pizzaArray = response;
-        
-
-    //   });
-
   }
 
-  searchMethod(){
-    this.service.getPizzas().subscribe((response) => {
-      console.log("before:",this.pizzasearchArray);
-        this.pizzasearchArray = response;
-        console.log("After response: ",this.pizzasearchArray);
-      });
-  }
-
-  Search(){
-  if(this.productname ==""){
-    this.searchMethod();
-  }else{
-    this.pizzasearchArray = this.pizzasearchArray.filter((res: { productname: string; }) =>{
-      return res.productname.toLocaleLowerCase().match(this.productname.toLocaleLowerCase())
-    })
-  }
-}
+  
 
 //new
 filterSearchedPizzas(query: string){

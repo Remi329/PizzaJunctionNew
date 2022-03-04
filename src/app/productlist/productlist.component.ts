@@ -25,7 +25,5 @@ export class ProductlistComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getAllProducts(){
-    this.getProductsEvent.emit('get all products');
-  }
+  
 }

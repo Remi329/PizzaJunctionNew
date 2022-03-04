@@ -27,12 +27,14 @@ import { RouterModule,Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
+import { NgxPaginationModule } from 'ngx-pagination';
 
 //configure routes
 const routes: Routes =[
   {path:'home', component:HomeComponent},
   {path:'pizza', component:PizzaComponent},
-  {path:'productlist', component:ProductlistComponent},
+  {path:'productlist', component:ProductlistComponent},  
+   {path:'pizza/name/:name',component:ProductlistComponent},
    {path:'search', component:PizzasearchComponent}
 ]
 
@@ -63,7 +65,8 @@ const routes: Routes =[
     MatTableModule,
     RouterModule.forRoot(routes),
     RouterModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgxPaginationModule
 
   ],
   providers: [
