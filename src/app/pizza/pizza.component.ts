@@ -21,7 +21,7 @@ export class PizzaComponent implements OnInit,OnDestroy {
   //ngxpagination
   page: number = 1;
   count: number = 0;
-  tableSize: number = 2;
+  tableSize: number = 2;//dictates the amount of data in a table at a time
   tableSizes: any = [3, 6, 9, 12];
 
 
@@ -71,16 +71,8 @@ productname:any;
   }
 
 
-  //pagination
-   @ViewChild('paginator') paginator:MatPaginator
-   datasource =new MatTableDataSource<'post'>();//might need to chane this to a service
-   
-   //invoke method
-   ngAfterViewInit(){
-       this.datasource = new MatTableDataSource(this.pizzaArray);
-      // length===this.pizzaArray.length();
-       this.datasource.paginator =this.paginator;
-   }
+ 
+  
 
   @Input() productCount = 0;
   @Output() getProductsEvent = new EventEmitter();
@@ -112,16 +104,7 @@ filterSearchedPizzas(query: string){
   console.log("type of results array= ", typeof this.pizzaArray.status);
 console.log("results array= ",this.pizzaArray.status);//status[0]get a specfic index here outputs an actual array
 
-  // this.filteredPizzas = (query)?
-  // this.products.filter(p => p.product_name.toLowerCase().includes(query.toLowerCase())) :
-  // this.products;
-
-//attempt at conversion
-//   let arr: any[] = [];  
-// Object.keys(this.products).map(function(key){  
-//     arr.push({[key]products[key]})  
-//     return arr;  
-// });  
+  
  console.log('Object=',this.products)  //all records in the db are shown
 console.log('Array=',this.results.status) //undefined
 //return this.filteredPizzas.find('product_name',(ref: { where: (arg0: string, arg1: string, arg2: string) => any; }) =>ref.where('product_name','==',query)).snapshotChanges();

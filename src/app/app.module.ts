@@ -1,3 +1,4 @@
+import { FooterComponent } from './footer/app.footer.component';
 import { SearchService } from './services/search.service';
 import { PostService } from './services/post.service';
 
@@ -47,7 +48,8 @@ const routes: Routes =[
     ProductlistComponent,
     PizzaComponent,
     PizzasearchComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

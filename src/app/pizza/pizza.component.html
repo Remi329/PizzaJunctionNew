@@ -65,15 +65,15 @@
                   totalItems: count
                 };
           let i = index">
-        <td scope="row">{{ pizza.product_id }}</td>
-            <td >{{pizza.product_name}}</td>
+        <td scope="row">
+            {{ pizza.product_id }}</td>
+            <td ><a [routerLink]="['/pizza','name',pizza.productname]"> {{ pizza.product_name }} </a>
+          </td>
             <td>{{pizza.total_price |currency:"GBP"}}</td>
         </tr> 
     
     </tbody>
-    <!--<mat-paginator #paginator [length]="100" [pageSizeOptions]="[3,5,10]" aria-label="select page">
- </mat-paginator> formats better when inside the table -->
-   
+    
 </table>
 
     <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onDataChange($event)">
